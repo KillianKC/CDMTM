@@ -1,0 +1,57 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "$schema": "CdmManifest.cdm.json",
+  "documentVersion": "1.0",
+  "manifestName": "AMSDB",
+  "explanation": "AMS Database ecdm explanation",
+  "entities": [
+    {
+      "type": "LocalEntity",
+      "entityName": "Portfolio",
+      "entityPath": "Portfolio.cdm.json/Portfolio",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "CustodyAccount",
+      "entityPath": "CustodyAccount.cdm.json/CustodyAccount",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TransactionLink",
+      "entityPath": "TransactionLink.cdm.json/TransactionLink",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "TransactionType",
+      "entityPath": "TransactionType.cdm.json/TransactionType",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "Inventory",
+      "entityPath": "Inventory.cdm.json/Inventory",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "InventoryTransaction",
+      "entityPath": "InventoryTransaction.cdm.json/InventoryTransaction",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PortfolioAuditAccount",
+      "entityPath": "PortfolioAuditAccount.cdm.json/PortfolioAuditAccount",
+      "dataPartitionPatterns": []
+    },
+    {
+      "type": "LocalEntity",
+      "entityName": "PortfolioAudit",
+      "entityPath": "PortfolioAudit.cdm.json/PortfolioAudit",
+      "dataPartitionPatterns": []
+    }
+  ]
+}

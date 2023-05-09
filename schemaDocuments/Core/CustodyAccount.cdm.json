@@ -1,0 +1,68 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "CustodyAccount",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "attributeGroupReference": "idCustodyAccount"
+        },
+        {
+          "attributeGroupReference": "idPortfolio"
+        },
+        {
+          "name": "tyCustodyAccount",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Type of Custody Account"
+        },
+        {
+          "name": "txCustodyAccount",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Type of Custody Account",
+          "maximumLength": "254"
+        },
+        {
+          "attributeGroupReference": "LegalEntity"
+        },
+        {
+          "name": "txComment",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Additional comments or notes on the Custody Account",
+          "maximumLength": "254"
+        },
+        {
+          "attributeGroupReference": "TimeStamp"
+        },
+        {
+          "name": "tyObjectStatus",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Type of object status for the Custody Account"
+        },
+        {
+          "name": "dtObjectStatus",
+          "purpose": "startedOn",
+          "dataType": "dateTime",
+          "description": "Date and time of the current object status for the Custody Account",
+          "appliedTraits": [
+            "is.formatted.dateTime"
+          ]
+        }
+      ],
+      "displayName": "CustodyAccount",
+      "description": "Database table containing information about Custody Accounts"
+    }
+  ]
+}

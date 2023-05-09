@@ -1,0 +1,63 @@
+{
+  "jsonSchemaSemanticVersion":"1.1.0",
+  "imports": [
+    {
+      "corpusPath":"cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath":"_allImports.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName":"PortfolioAuditAccount",
+      "extendsEntity":"CdmEntity",
+      "hasAttributes": [
+        {
+        "name":"guPortfolioAudit",
+        "purpose":"identifiedBy",
+        "dataType":"integer",
+        "description":"Unique identifier for the portfolio audit"
+      },
+      {
+            "name":"guInvestmentObject",
+            "purpose":"identifiedBy",
+            "dataType":"integer",
+            "isNullable":"true",
+            "isPrimaryKey":"False",
+            "description":"Unique identifier for the investment object"
+        },
+        {
+        "name":"txInvestmentObjectShort",
+        "purpose":"hasA",
+        "dataType":"string",
+        "isNullable":"true",
+        "isPrimaryKey":"False",
+        "description":"Short description of the investment object",
+        "maximumLength":"254"
+        },
+        {
+          "attributeGroupReference":"idCustodyAccount"
+        },
+        {
+          "name": "tyCustodyAccount",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Type of Custody Account"
+        },
+        {
+          "name": "txCustodyAccount",
+          "purpose": "hasA",
+          "dataType": "string",
+          "description": "Type of Custody Account",
+          "maximumLength": "254"
+        },
+        {
+          "attributeGroupReference":"DateLink"
+        }
+      ],
+      "displayName":"PortfolioAuditAccount",
+      "description":"Database table contains information about the Portfolio Account Audit table"
+    }
+  ]
+}

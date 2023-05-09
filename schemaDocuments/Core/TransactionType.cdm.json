@@ -1,0 +1,40 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName": "TransactionType",
+      "extendsEntity": "CdmEntity",
+      "hasAttributes": [
+        {
+          "attributeGroupReference": "TypeOfTransaction"
+        },
+        {
+          "name": "tyTransactionGroup",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Type of transaction group"
+        },
+        {
+          "attributeGroupReference": "TimeStamp",
+          "isNullable":"true"
+        },
+        {
+          "name": "nuAux",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Auxiliary number"
+        }
+      ],
+      "displayName": "TransactionLink",
+      "description": "Database table containing information about TransactionLink"
+    }
+  ]
+}
