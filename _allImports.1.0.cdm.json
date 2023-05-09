@@ -1,0 +1,271 @@
+{
+  "jsonSchemaSemanticVersion":"1.1.0",
+  "imports": [
+    {
+      "corpusPath":"cdm:/foundations.4.3.cdm.json"
+    }
+  ],
+  "definitions":[
+    {
+      "attributeGroupName": "idPortfolio",
+      "members": [
+        {
+          "name":"idPortfolio",
+          "purpose":"identifiedBy",
+          "dataType":"integer",
+          "description":"Identifier for the portfolio"
+        }
+      ]
+    },
+    {
+      "attributeGroupName": "DateInfo",
+      "members": [
+        {
+          "name":"dtCreate",
+          "purpose":"createdOn",
+          "dataType":"dateTime",
+          "description":"The records can be used from this date onwards in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)",
+          "appliedTraits":[
+            "is.formatted.dateTime"
+            ]
+        },
+        {
+          "name":"dtUpdate",
+          "purpose":"modifiedOn",
+          "dataType":"dateTime",
+          "description":"The records can be used from this date onwards in yyyy-mm-ddThh:mm:ssZ form (conform to ISO 8061)",
+          "appliedTraits":[
+            "is.formatted.dateTime"
+          ]
+        }
+      ]
+    },
+    {
+      "attributeGroupName": "UsersInfo",
+      "members": [
+        {
+          "name":"cdDbUserCreate",
+          "purpose":"hasA",
+          "dataType":"string",
+          "description":"Identifier of the database user who created the portfolio",
+          "maximumLength":"30"
+        },
+        {
+          "name":"cdDbUserUpdate",
+          "purpose":"hasA",
+          "dataType":"string",
+          "description":"Identifier of the database user who last updated the portfolio",
+          "maximumLength":"30"
+        }
+      ]
+    },
+      {
+        "attributeGroupName": "Owner",
+        "members": [
+          {
+      "name":"cdDbUserOwner",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Identifier of the database user who owns the portfolio",
+      "maximumLength":"30"
+    }
+  ]
+},
+    {
+      "attributeGroupName": "idCustodyAccount",
+      "members": [
+        {
+          "name":"idCustodyAccount",
+          "purpose":"identifiedBy",
+          "dataType":"integer",
+          "description":"Unique identifier for the Custody Account",
+          "maximumLength":""
+        }
+      ]
+    },
+    {
+      "attributeGroupName":"LegalEntity",
+      "members": [
+        {
+          "name":"idLegalEntity",
+          "purpose":"identifiedBy",
+          "dataType":"integer",
+          "description":"Unique identifier for the Legal Entity associated with the Custody Account"
+        }
+      ]
+    },
+    {
+      "attributeGroupName":"TimeStamp",
+      "members":[
+        {
+          "name":"tmStamp",
+          "purpose":"startedOn",
+          "dataType":"dateTime",
+          "isNullable": "true",
+          "description":"Timestamp of the portfolio"
+        }
+      ]
+    },
+    {
+      "attributeGroupName":"idInventoryTransaction",
+      "members":[
+        {
+          "name":"idInventoryTransaction",
+          "purpose":"identifiedBy",
+          "dataType":"integer",
+          "description":"Identifier of the inventory transaction"
+        }
+      ]
+    },
+    {
+      "attributeGroupName":"idInventoryTransactionLinked",
+      "members":[
+        {
+          "name":"idInventoryTransactionLinked",
+          "purpose":"identifiedBy",
+          "dataType":"integer",
+          "description":"Identifier of the linked inventory transaction"
+        }
+      ]
+    },
+    {
+  "attributeGroupName":"TypeOfTransaction",
+  "members":[
+     {
+        "name":"tyTransaction",
+        "purpose":"hasA",
+        "dataType":"integer",
+        "description":"Type of transaction",
+        "appliedTraits":[
+           {
+              "traitReference":"does.haveDefault",
+               "arguments": [
+                 {
+                   "entityReference": {
+                     "explanation":"Each Number Corresponds to a type of transaction",
+                     "entityShape":"listLookupValues",
+                     "constantValues":[
+                      [
+                        "en",
+                        "Purchase",
+                        "Purchase",
+                        "10"
+                      ],
+                  [
+                    "en",
+                    "Payment under subscription",
+                    "Payment under subscription",
+                    "19"
+                  ],
+                  [
+                    "en",
+                    "Sale",
+                    "Sale",
+                    "20"
+                  ],
+                  [
+                    "en",
+                    "Subscription",
+                    "Subscription",
+                    "30"
+                  ],
+                  [
+                    "en",
+                    "Redemption",
+                    "Redemption",
+                    "35"
+                  ],
+                  [
+                    "en",
+                    "Capital Increase",
+                    "Capital Increase",
+                    "40"
+                  ],
+                  [
+                    "en",
+                    "Purchase (Open)",
+                    "Purchase (Open)",
+                    "45"
+                  ],
+                  [
+                    "en",
+                    "Sale (Open)",
+                    "Sale (Open)",
+                    "50"
+                  ],
+                  [
+                    "en",
+                    "Purchase (Close)",
+                    "Purchase (Close)",
+                    "60"
+                  ],
+                  [
+                    "en",
+                    "Sale (Close)",
+                    "Sale (Close)",
+                    "65"
+                  ],
+                  [
+                    "en",
+                    "Short Selling",
+                    "Short Selling",
+                    "70"
+                  ],
+                  [
+                    "en",
+                    "Deliver Against Payment",
+                    "Deliver Against Payment",
+                    "72"
+                  ],
+                  [
+                    "en",
+                    "Receipt Against Payment",
+                    "Receipt Against Payment",
+                    "74"
+                  ],
+                  [
+                    "en",
+                    "Lending New",
+                    "Lending New",
+                    "80"
+                  ],
+                  [
+                    "en",
+                    "Lending Recall",
+                    "Lending Recall",
+                    "90"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+},
+{
+  "attributeGroupName": "DateLink",
+  "members": [
+    {
+      "name":"dtLink",
+      "purpose":"createdOn",
+      "dataType":"dateTime",
+      "description":"The records can be used from this date onwards in yyyy-mm-dd(conform to ISO 8061)",
+      "appliedTraits":[
+        "is.formatted.date"
+        ]
+    },
+    {
+      "name":"dtLinkEnd",
+      "purpose":"modifiedOn",
+      "dataType":"dateTime",
+      "description":"The records can be used from this date onwards in yyyy-mm-dd conform to ISO 8061)",
+      "appliedTraits":[
+        "is.formatted.date"
+      ]
+    }
+  ]
+}
+]
+}

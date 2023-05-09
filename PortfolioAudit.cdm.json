@@ -1,0 +1,584 @@
+{
+  "jsonSchemaSemanticVersion": "1.1.0",
+  "imports": [
+    {
+      "corpusPath": "cdm:/foundations.4.3.cdm.json"
+    },
+    {
+      "corpusPath": "_allImports.1.0.cdm.json"
+    }
+  ],
+  "definitions": [
+    {
+      "entityName":"PortfolioAudit",
+      "extendsEntity":"CdmEntity",
+      "hasAttributes": [
+        {
+        "name":"guPortfolioAudit",
+        "purpose":"identifiedBy",
+        "dataType":"integer",
+        "description":"Unique identifier for the portfolio audit"
+      },
+      {
+      "name":"guPortfolio",
+      "purpose":"identifiedBy",
+      "dataType":"integer",
+      "description":"Unique identifier for the portfolio"
+    },
+      {
+        "attributeGroupReference":"TimeStamp"
+      },
+      {
+        "attributeGroupReference":"UsersInfo"
+      },
+        {
+          "attributeGroupReference":"idPortfolio"
+        },
+        {
+          "attributeGroupReference":"DateInfo"
+        },
+        {
+          "name": "inDeleted",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Flag indicating whether the record is deleted or not"
+        },
+        {
+          "name": "tyContract",
+          "purpose": "hasA",
+          "dataType": "integer",
+          "description": "Type of contract for the portfolio",
+          "appliedTraits":[
+             {
+                "traitReference":"does.haveDefault",
+                 "arguments": [
+                   {
+                     "entityReference": {
+                       "explanation":"Each contrat has it specifities",
+                       "entityShape":"listLookupValues",
+                       "constantValues":[
+                        [
+                          "en",
+                          "Advisory",
+                          "Advisory",
+                          "-Corporate"
+                        ],
+                    [
+                      "en",
+                      "Discretionary",
+                      "full",
+                      "limited"
+                    ]
+                  ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+        "name":"tyPortfolio",
+        "purpose":"hasA",
+        "dataType":"integer",
+        "description":"Type of portfolio, Client or External",
+        "isNullable":"true"
+      },
+      {
+        "name": "tyInvestmentStyle",
+        "purpose": "hasA",
+        "dataType": "integer",
+        "description": "Type of investment style for the portfolio",
+        "appliedTraits":[
+           {
+              "traitReference":"does.haveDefault",
+               "arguments": [
+                 {
+                   "entityReference": {
+                     "explanation":"Each invstment style belongs to a certain amount of risk",
+                     "entityShape":"listLookupValues",
+                     "constantValues":[
+                      [
+                        "en",
+                        "Alterntive",
+                        " 60% Alternatif",
+                        "40% Cash"
+                      ],
+                  [
+                    "en",
+                    "Growth",
+                    "Equities 60%",
+                    "Bonds 20%"
+                  ]
+                ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+      "name":"txPortfolio",
+      "purpose":"hasA",
+      "dataType":"string",
+      "isNullable":"true",
+      "isPrimaryKey":"False",
+      "description":"Description of the portfolio",
+      "maximumLength":"254"
+      },
+      {
+      "name":"tyBookValueCalc",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of book value calculation for the portfolio",
+      "isNullable":"true"
+    },
+    {
+    "name":"maPerformanceCalcType",
+    "purpose":"hasA",
+    "dataType":"integer",
+    "description":"Method used to calculate the performance of the portfolio",
+    "isNullable":"true"
+      },
+      {
+      "name":"dtInception",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "isNullable":"no",
+      "isPrimaryKey":"False",
+      "description":"Date when the portfolio was created",
+      "appliedTraits":[
+        "is.formatted.dateTime"
+        ]
+      },
+      {
+      "name":"tyPortfolioSegment",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"idLanguageReport",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Identifier for the report language",
+      "isNullable":"true",
+      "appliedTraits":[
+         {
+            "traitReference":"does.haveDefault",
+             "arguments": [
+               {
+                 "entityReference": {
+                   "explanation":"language the client chooses to read his report in",
+                   "entityShape":"listLookupValues",
+                   "constantValues":[
+                    [
+                      "en",
+                      "English"
+                    ],
+                [
+                  "FR",
+                  "French"
+                ],
+                [
+                  "IT",
+                  "Italian"
+                ]
+              ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+      {
+      "name":"tyAddressReport",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of address for the report",
+      "isNullable":"true",
+      "appliedTraits":[
+         {
+            "traitReference":"does.haveDefault",
+             "arguments": [
+               {
+                 "entityReference": {
+                   "explanation":"choice of adresses the client wishes to send the reports too",
+                   "entityShape":"listLookupValues",
+                   "constantValues":[
+                    [
+                      "en",
+                      "All"
+                    ],
+                [
+                  "en",
+                  "Business"
+                ],
+                [
+                  "en",
+                  "Home"
+                ]]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+      {
+      "name":"guContainer",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Unique identifier for the container",
+      "isNullable":"true"
+      },
+      {
+      "name":"cdContainer",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Code of the container",
+      "isNullable":"true",
+      "maximumLength":"60"
+      },
+      {
+      "name":"inPrivate",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Flag indicating whether the record is private or not",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioExecutorRoleReport",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of portfolio executor role for the report",
+      "isNullable":"true"
+      },
+      {
+      "name":"guLegalEntityReport",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Unique identifier for the legal entity for the report",
+      "isNullable":"true"
+      },
+      {
+      "name":"cdLegalEntityReport",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Code of the legal entity for the report",
+      "isNullable":"true",
+      "maximumLength":"60"
+      },
+      {
+      "name":"txLegalEntityReportShort",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Short description of the legal entity for the report",
+      "isNullable":"true",
+      "maximumLength":"254"
+      },
+      {
+      "name":"tyConstruction",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of construction",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment2",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment3",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment4",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment5",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment6",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment7",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPortfolioSegment8",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of second portfolio segment",
+      "isNullable":"true"
+      },
+      {
+      "name":"maPortfolioOption",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Method used to calculate the portfolio option",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyPayout",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of payout",
+      "isNullable":"true"
+      },
+      {
+      "name":"amPayoutLast",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Amount of the last payout",
+      "isNullable":"true"
+      },
+      {
+      "name":"dtPayoutLast",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "description":"Date of the last payout",
+      "isNullable":"true",
+      "isPrimaryKey":"False",
+      "appliedTraits":[
+        "is.formatted.dateTime"
+        ]
+      },
+      {
+      "name":"dtPayoutNext",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "isNullable":"true",
+      "isPrimaryKey":"False",
+      "description":"Date of the next payout",
+      "appliedTraits":[
+        "is.formatted.dateTime"
+        ]
+      },
+      {
+      "name":"dtInvPolicyMeetingLast",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "isNullable":"true",
+      "isPrimaryKey":"False",
+      "description":"Date of the last investment policy meeting",
+      "appliedTraits":[
+        "is.formatted.dateTime"
+        ]
+      },
+      {
+      "name":"maPortfolioOption",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Date of the next investment policy meeting",
+      "isNullable":"true",
+      "isPrimaryKey":"False",
+      "appliedTraits":[
+        "is.formatted.dateTime"
+        ]
+      },
+      {
+      "name":"tyInvestmentConstraint",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of investment constraint",
+      "isNullable":"true"
+      },
+      {
+      "name":"inActiveStrategy",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Flag indicating whether the strategy is active or not",
+      "isNullable":"true"
+      },
+      {
+      "name":"tyInvestmentObjectStatus",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Type of investment object status",
+      "isNullable":"true"
+      },
+      {
+      "name":"dtInvestmentObjectStatus",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "description":"Date of the investment object status",
+      "isNullable":"true",
+      "appliedTraits":[
+        "is.formatted.date"
+      ]
+      },
+      {
+      "name":"guLEProviderUpdate",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Unique identifier for the legal entity provider update",
+      "isNullable":"true"
+      },
+      {
+      "name":"cdLEProviderUpdate",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Code of the legal entity provider update",
+      "isNullable":"true",
+      "maximumLength":"60"
+      },
+      {
+      "name":"txLEProviderUpdateShort",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"Short description of the legal entity provider update",
+      "isNullable":"true",
+      "maximumLength":"254"
+      },
+      {
+      "name":"guLEPreferredProvider",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"Unique identifier for the preferred legal entity provider",
+      "isNullable":"true"
+      },
+      {
+      "name":"cdLEPreferredProvider",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"A code that identifies the preferred provider of legal entity information for the portfolio.",
+      "isNullable":"true",
+      "maximumLength":"60"
+      },
+      {
+      "name":"txLEPreferredProviderShort",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"A short description or abbreviation of the preferred provider of legal entity information for the portfolio.",
+      "isNullable":"true",
+      "maximumLength":"254"
+      },
+      {
+      "name":"inLockProvider",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"A flag that indicates whether the preferred provider of legal entity information for the portfolio is locked or not.",
+      "isNullable":"true"
+      },
+      {
+      "name":"tlComment",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"A textual comment or note about the portfolio.",
+      "isNullable":"true",
+      "maximumLength":"-1"
+      },
+      {
+      "name":"fcDividendTax",
+      "purpose":"hasA",
+      "dataType":"any",
+      "description":"The tax rate applied to dividends earned by the portfolio.",
+      "isNullable":"False",
+      "appliedTraits":[
+        "is.dataFormat.floatingPoint"
+        ]
+      },
+      {
+      "name":"fcInterestTax",
+      "purpose":"hasA",
+      "dataType":"any",
+      "description":"The tax rate applied to interest earned by the portfolio.",
+      "isNullable":"False",
+      "appliedTraits":[
+        "is.dataFormat.floatingPoint"
+        ]
+      },
+      {
+      "name":"fcInterestEUTax",
+      "purpose":"hasA",
+      "dataType":"any",
+      "description":"TThe tax rate applied to interest earned by the portfolio in the European Union.",
+      "isNullable":"False",
+      "appliedTraits":[
+        "is.dataFormat.floatingPoint"
+        ]
+      },
+      {
+      "name":"fcReclaimTax",
+      "purpose":"hasA",
+      "dataType":"any",
+      "description":"The amount of tax that can be reclaimed by the portfolio.",
+      "isNullable":"False",
+      "appliedTraits":[
+        "is.dataFormat.floatingPoint"
+        ]
+      },
+      {
+      "name":"tyValuationSchemaLink",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"A code that identifies the type of valuation schema used by the portfolio.",
+      "isNullable":"true"
+      },
+      {
+      "name":"guValuationSchema",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"A unique identifier for the valuation schema used by the portfolio.",
+      "isNullable":"true"
+      },
+      {
+      "name":"cdValuationSchema",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"A code that identifies the valuation schema used by the portfolio.",
+      "isNullable":"true",
+      "maximumLength":"60"
+      },
+      {
+      "name":"txValuationSchemaShort",
+      "purpose":"hasA",
+      "dataType":"string",
+      "description":"A short description or abbreviation of the valuation schema used by the portfolio.",
+      "isNullable":"true",
+      "maximumLength":"254"
+      },
+      {
+      "name":"tyTaxRule",
+      "purpose":"hasA",
+      "dataType":"integer",
+      "description":"A code that identifies the tax rule used for the portfolio.",
+      "isNullable":"true"
+      },
+      {
+      "name":"dtLotCalcLast",
+      "purpose":"hasA",
+      "dataType":"dateTime",
+      "description":"The date when the last lot calculation was performed for the portfolio. A lot is a group of assets that were bought or sold together, and the calculation determines the cost basis of the assets for tax purposes.",
+      "isNullable":"true",
+      "appliedTraits":[
+        "is.formatted.date"
+      ]
+      }
+        ],
+        "displayName":"Portfolio Audit",
+        "description":"Database table contains information about the Portfolio Audit table"
+      }
+  ]
+}
